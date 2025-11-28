@@ -13,9 +13,7 @@ body{
 }
 
 header{
- background: linear-gradient(to right,#0a2540,#567089);
-
-
+  background: linear-gradient(to right,#0a2540,#567089);
   color:white;
   text-align:center;
   padding:40px;
@@ -40,6 +38,18 @@ header{
 }
 
 .lang-ar{ display:none; }
+
+/* Medical dot style */
+.service-item::before{
+  content:"● ";
+  color:#0a2540;
+  font-weight:bold;
+}
+
+/* Arabic service fix */
+[dir="rtl"] .service-item::before{
+  content:"• ";
+}
 
 .profile{
   width:130px;
@@ -121,6 +131,48 @@ footer{
   from{opacity:0; transform:translateY(-20px);}
   to{opacity:1; transform:translateY(0);}
 }
+/* Hover Animations */
+
+.card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 20px rgba(0,0,0,0.12);
+}
+
+.service-item {
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.service-item:hover {
+  transform: translateX(6px);
+  color: #0a2540;
+}
+
+.gallery img {
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.gallery img:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+}
+
+a.btn {
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+a.btn:hover {
+  transform: scale(1.05);
+}
+
+/* Smooth language change */
+.lang-en, .lang-ar {
+  transition: opacity 0.4s ease;
+}
+
 </style>
 </head>
 
@@ -153,12 +205,12 @@ specialized in rehabilitation, pain management and modern physiotherapy techniqu
 <div class="card">
 <h2>Services</h2>
 <div class="services">
-<div>✅ Sports Rehabilitation</div>
-<div>✅ Orthopedic Therapy</div>
-<div>✅ Dry Needling</div>
-<div>✅ Hijama Therapy</div>
-<div>✅ Pain Management</div>
-<div>✅ Home Visits Treatment</div>
+<div class="service-item">Sports Rehabilitation</div>
+<div class="service-item">Orthopedic Therapy</div>
+<div class="service-item">Dry Needling</div>
+<div class="service-item">Hijama Therapy</div>
+<div class="service-item">Pain Management</div>
+<div class="service-item">Home Visits Treatment</div>
 </div>
 </div>
 
@@ -210,14 +262,14 @@ href="https://wa.me/96181812850?text=Hello%20Dr.%20Mounir%2C%20I%20would%20like%
 
 <div class="card">
 <h2>الخدمات</h2>
-<p>
-✅ علاج رياضي<br>
-✅ علاج إصابات العظام<br>
-✅ الإبر الجافة<br>
-✅ الحجامة<br>
-✅ علاج الآلام<br>
-✅ زيارات منزلية
-</p>
+<div class="services">
+<div class="service-item">علاج رياضي</div>
+<div class="service-item">علاج إصابات العظام</div>
+<div class="service-item">الإبر الجافة</div>
+<div class="service-item">الحجامة</div>
+<div class="service-item">علاج الآلام</div>
+<div class="service-item">زيارات منزلية</div>
+</div>
 </div>
 
 <div class="card">
@@ -260,8 +312,8 @@ href="https://wa.me/96181812850?text=مرحبا%20دكتور%20منير%2C%20أ�
 
 <script>
 function setLang(lang){
-  document.getElementById('en').style.display = (lang==='en') ? 'block' : 'none';
-  document.getElementById('ar').style.display = (lang==='ar') ? 'block' : 'none';
+  document.getElementById("en").style.display = (lang==="en") ? "block" : "none";
+  document.getElementById("ar").style.display = (lang==="ar") ? "block" : "none";
 }
 </script>
 
