@@ -8,24 +8,45 @@
 <style>
 body{
   margin:0;
-  font-family: 'Segoe UI', Arial, sans-serif;
-  background:#f4f8fb;
+  font-family:'Segoe UI', Arial, sans-serif;
+  background:#f2f4f7;
 }
 
 header{
-  background:linear-gradient(to right,#0c4a6e,#0284c7);
+ background: linear-gradient(to right,#0a2540,#567089);
+
+
   color:white;
   text-align:center;
   padding:40px;
   animation: fadeDown 1s ease;
 }
 
+/* Language Switch */
+.language-switch{
+  position:absolute;
+  top:15px;
+  right:20px;
+  background:white;
+  color:#0a2540;
+  padding:6px 14px;
+  border-radius:6px;
+  font-weight:bold;
+}
+
+.language-switch span{
+  cursor:pointer;
+  margin:0 4px;
+}
+
+.lang-ar{ display:none; }
+
 .profile{
-  width:120px;
-  height:120px;
+  width:130px;
+  height:130px;
   border-radius:50%;
   object-fit:cover;
-  border:4px solid white;
+  border:4px solid silver;
 }
 
 section{
@@ -37,55 +58,79 @@ section{
 .card{
   background:white;
   padding:25px;
-  border-radius:8px;
-  margin-bottom:25px;
-  box-shadow:0 4px 10px rgba(0,0,0,0.05);
+  border-radius:10px;
+  margin-bottom:30px;
+  box-shadow:0 6px 15px rgba(0,0,0,0.05);
   animation: fadeUp 1s ease;
 }
 
-.services{
+h2{
+  color:#0a2540;
+  border-bottom:2px solid silver;
+  padding-bottom:5px;
+}
+
+.services, .gallery{
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
   gap:15px;
 }
 
-button,a.btn{
-  background:#25D366;
-  color:white;
-  border:none;
-  padding:15px 25px;
-  font-size:16px;
-  border-radius:5px;
-  cursor:pointer;
-  text-decoration:none;
-  display:inline-block;
-  margin-top:10px;
+.gallery img{
+  width:100%;
+  border-radius:8px;
+  height:200px;
+  object-fit:cover;
 }
 
-button:hover,.btn:hover{
-  background:#1EBE57;
+a.btn{
+  background:#25D366;
+  color:white;
+  padding:15px 25px;
+  border-radius:6px;
+  display:inline-block;
+  margin-top:10px;
+  text-decoration:none;
+  font-size:17px;
+}
+
+a.btn:hover{
+  background:#1ebe5b;
 }
 
 footer{
-  text-align:center;
-  padding:15px;
-  background:#0c4a6e;
+  background:#0a2540;
   color:white;
+  text-align:center;
+  padding:20px;
+}
+
+.testimonial{
+  background:#f5f7fa;
+  padding:15px;
+  border-left:5px solid #0a2540;
+  margin-bottom:15px;
 }
 
 @keyframes fadeUp{
-  from {opacity:0; transform:translateY(20px);}
-  to {opacity:1; transform:translateY(0);}
+  from{opacity:0; transform:translateY(30px);}
+  to{opacity:1; transform:translateY(0);}
 }
 
 @keyframes fadeDown{
-  from {opacity:0; transform:translateY(-20px);}
-  to {opacity:1; transform:translateY(0);}
+  from{opacity:0; transform:translateY(-20px);}
+  to{opacity:1; transform:translateY(0);}
 }
 </style>
 </head>
 
 <body>
+
+<!-- Language Toggle -->
+<div class="language-switch">
+  <span onclick="setLang('en')">EN</span> |
+  <span onclick="setLang('ar')">AR</span>
+</div>
 
 <header>
 <img src="profile.jpg" class="profile">
@@ -94,13 +139,14 @@ footer{
 <p>Dry Needling • Hijama Therapy</p>
 </header>
 
-<section>
+<!-- ENGLISH VERSION -->
+<section id="en" class="lang-en">
 
 <div class="card">
 <h2>About Me</h2>
 <p>
 I am a Doctor of Physical Therapy (DPT) candidate and fresh graduate Physical Therapist,
-specialized in pain management, sports rehabilitation and modern physiotherapy techniques.
+specialized in rehabilitation, pain management and modern physiotherapy techniques.
 </p>
 </div>
 
@@ -112,32 +158,57 @@ specialized in pain management, sports rehabilitation and modern physiotherapy t
 <div>✅ Dry Needling</div>
 <div>✅ Hijama Therapy</div>
 <div>✅ Pain Management</div>
-<div>✅ Home Visits for Treatment</div>
+<div>✅ Home Visits Treatment</div>
 </div>
 </div>
 
 <div class="card">
 <h2>Book Appointment</h2>
-<p>Click to book directly via WhatsApp</p>
+<p>Book directly via WhatsApp</p>
 <a class="btn" target="_blank"
-href="https://wa.me/96181812850?text=Hello%20Dr.%20Mounir%2C%20I%20would%20like%20to%20book%20an%20appointment%20(at%20home%20if%20available)">
+href="https://wa.me/96181812850?text=Hello%20Dr.%20Mounir%2C%20I%20would%20like%20to%20book%20an%20appointment">
 📅 Book on WhatsApp
 </a>
 </div>
 
 <div class="card">
-<h2>Contact</h2>
-<p>📞 Phone: <a href="tel:+96181812850">81 812 850</a></p>
-<p>📷 Instagram: <a href="https://instagram.com/jdmounir" target="_blank">@jdmounir</a></p>
+<h2>Certificates</h2>
+<ul>
+<li>Dry Needling Certificate</li>
+<li>Hijama Therapy Certificate</li>
+<li>DPT Enrollment Certificate</li>
+</ul>
 </div>
 
-<div class="card" dir="rtl">
+<div class="card">
+<h2>Gallery</h2>
+<div class="gallery">
+<img src="https://via.placeholder.com/400x300?text=Upload+Photo">
+<img src="https://via.placeholder.com/400x300?text=Upload+Photo">
+<img src="https://via.placeholder.com/400x300?text=Upload+Photo">
+</div>
+</div>
+
+<div class="card">
+<h2>Patient Reviews</h2>
+<div class="testimonial">★★★★★ "Excellent service and fast recovery."</div>
+<div class="testimonial">★★★★★ "Professional and well experienced."</div>
+</div>
+
+</section>
+
+<!-- ARABIC VERSION -->
+<section id="ar" class="lang-ar" dir="rtl">
+
+<div class="card">
 <h2>من أنا</h2>
 <p>
-طالب دكتور علاج فيزيائي وخريج حديث، أقدم جلسات علاج فيزيائي، علاج بالإبر الجافة،
-والحجامة باستخدام أحدث الطرق العلمية.
+أنا طالب دكتور علاج فيزيائي وخريج حديث، متخصص في إعادة التأهيل،
+علاج الآلام وتقنيات العلاج الفيزيائي الحديثة.
 </p>
+</div>
 
+<div class="card">
 <h2>الخدمات</h2>
 <p>
 ✅ علاج رياضي<br>
@@ -145,14 +216,40 @@ href="https://wa.me/96181812850?text=Hello%20Dr.%20Mounir%2C%20I%20would%20like%
 ✅ الإبر الجافة<br>
 ✅ الحجامة<br>
 ✅ علاج الآلام<br>
-✅ زيارات منزلية للعلاج
+✅ زيارات منزلية
 </p>
+</div>
 
+<div class="card">
 <h2>حجز موعد</h2>
 <a class="btn" target="_blank"
-href="https://wa.me/96181812850?text=مرحبا%20دكتور%20منير،%20أود%20حجز%20موعد">
+href="https://wa.me/96181812850?text=مرحبا%20دكتور%20منير%2C%20أود%20حجز%20موعد">
 📅 احجز عبر واتساب
 </a>
+</div>
+
+<div class="card">
+<h2>الشهادات</h2>
+<ul>
+<li>شهادة الإبر الجافة</li>
+<li>شهادة الحجامة</li>
+<li>إثبات التسجيل في برنامج DPT</li>
+</ul>
+</div>
+
+<div class="card">
+<h2>معرض الصور</h2>
+<div class="gallery">
+<img src="https://via.placeholder.com/400x300?text=صورة">
+<img src="https://via.placeholder.com/400x300?text=صورة">
+<img src="https://via.placeholder.com/400x300?text=صورة">
+</div>
+</div>
+
+<div class="card">
+<h2>تقييمات المرضى</h2>
+<div class="testimonial">★★★★★ جلسات ممتازة وراحة فورية</div>
+<div class="testimonial">★★★★★ تعامل راقٍ ونتائج رائعة</div>
 </div>
 
 </section>
@@ -160,6 +257,13 @@ href="https://wa.me/96181812850?text=مرحبا%20دكتور%20منير،%20أو
 <footer>
 &copy; 2025 Dr. Mounir Physical Therapy
 </footer>
+
+<script>
+function setLang(lang){
+  document.getElementById('en').style.display = (lang==='en') ? 'block' : 'none';
+  document.getElementById('ar').style.display = (lang==='ar') ? 'block' : 'none';
+}
+</script>
 
 </body>
 </html>
