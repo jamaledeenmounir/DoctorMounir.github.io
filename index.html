@@ -17,7 +17,7 @@ header{
   color:white;
   text-align:center;
   padding:40px;
-  animation: fadeDown 1s ease;
+  animation: fadeDown 2.5s cubic-bezier(.23,1,.32,1) forwards;
 }
 
 /* Language Switch */
@@ -94,7 +94,7 @@ section{
   border-radius:10px;
   margin-bottom:30px;
   box-shadow:0 6px 15px rgba(0,0,0,0.05);
-  animation: fadeUp 1s ease;
+  animation: fadeUp 1.8s ease forwards;
 }
 
 h2{
@@ -147,9 +147,10 @@ footer{
 }
 
 @keyframes fadeDown{
-  from{opacity:0; transform:translateY(-20px);}
-  to{opacity:1; transform:translateY(0);}
+  0%{opacity:0; transform:translateY(-40px);}
+  100%{opacity:1; transform:translateY(0);}
 }
+
 
 /* HOVER ANIMATIONS (DESKTOP) */
 .card{ transition: transform 0.3s ease, box-shadow 0.3s ease; }
@@ -251,7 +252,7 @@ a.btn:active::after,
   position: absolute;
   border-radius: 50%;
   background: rgba(39,53,119,0.4);
-
+  will-change: transform, opacity;
   transform: scale(0);
   animation: ripple 900ms linear;
   pointer-events: none;
@@ -264,16 +265,47 @@ a.btn:active::after,
   }
 }
 /* CLICK EFFECT FOR HEADER TEXT */
-.hero-name, .hero-title, .hero-line {
-  cursor: pointer;
-  transition: transform 0.25s ease, text-shadow 0.25s ease;
+.hero-name{
+  opacity:0;
+  animation: fadeText 2.5s ease forwards;}
+
+.hero-title{
+  opacity:0;
+  animation: fadeText 2.5s ease forwards;
+  animation-delay: 0.7s;
 }
+
+.hero-line{
+  opacity:0;
+  animation: fadeText 2.5s ease forwards;
+  animation-delay: 1.4s;
+}
+
+/* TEXT ANIMATION */
+@keyframes fadeText{
+  from{opacity:0; transform:translateY(15px);}
+  to{opacity:1; transform:translateY(0);}
+}
+
 
 .hero-name:active,
 .hero-title:active,
 .hero-line:active {
-  transform: scale(0.94);
-  text-shadow: 0 0 18px rgba(255,255,255,0.8);
+  transform: scale(0.88);
+  text-shadow: 0 0 30px rgba(255,255,255,1);
+  opacity: 0.85;
+}
+
+/* MOBILE HEADER TAP EFFECT */
+@media (max-width: 768px){
+
+  .hero-name:active,
+  .hero-title:active,
+  .hero-line:active {
+    transform: scale(0.9);
+    text-shadow: 0 0 20px rgba(255,255,255,1);
+    opacity: 0.8;
+  }
 }
 
 </style>
@@ -435,14 +467,12 @@ href="https://wa.me/96181812850?text=مرحبا%20دكتور%20منير%2C%20أ�
 </footer>
 
 <script>
-function setLang(lang){
-  document.getElementById("en").style.display = (lang==="en") ? "block" : "none";
-  document.getElementById("ar").style.display = (lang==="ar") ? "block" : "none";
-}
-</script>
-<script>
-document.addEventListener('click', function (e) {
-  const target = e.target.closest('.card, .service-item, a.btn, .language-switch');
+document.addEventListener('touchstart', handleRipple, { passive: false });
+document.addEventListener('click', handleRipple);
+
+function handleRipple(e) {
+
+  const target = e.target.closest('.card, .service-item, a.btn, .language-switch, h1, p');
   if (!target) return;
 
   const ripple = document.createElement('span');
@@ -450,17 +480,21 @@ document.addEventListener('click', function (e) {
 
   const rect = target.getBoundingClientRect();
   const size = Math.max(rect.width, rect.height);
+
+  // ✅ SUPPORT BOTH MOBILE & DESKTOP
+  const x = (e.touches && e.touches[0]) ? e.touches[0].clientX : e.clientX;
+  const y = (e.touches && e.touches[0]) ? e.touches[0].clientY : e.clientY;
+
   ripple.style.width = ripple.style.height = size + 'px';
-  ripple.style.left = (e.clientX - rect.left - size / 2) + 'px';
-  ripple.style.top = (e.clientY - rect.top - size / 2) + 'px';
+  ripple.style.left = (x - rect.left - size / 2) + 'px';
+  ripple.style.top = (y - rect.top - size / 2) + 'px';
 
   target.appendChild(ripple);
 
-  setTimeout(() => {
-    ripple.remove();
-  }, 600);
-});
+  setTimeout(() => ripple.remove(), 900);
+}
 </script>
+
 <!-- FULLSCREEN IMAGE VIEWER -->
 
 <div id="popup" onclick="closePopup()" 
