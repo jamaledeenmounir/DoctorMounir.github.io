@@ -173,7 +173,9 @@ a.btn:hover{ transform:scale(1.05); }
 }
 
 /* RIPPLE EFFECT */
-a.btn, .card, .service-item, .language-switch {
+a.btn, .card, .service-item, .language-switch,
+.hero-name, .hero-title, .hero-line {
+
   position: relative;
   overflow: hidden;
 }
@@ -181,7 +183,11 @@ a.btn, .card, .service-item, .language-switch {
 a.btn::after,
 .card::after,
 .service-item::after,
-.language-switch::after {
+.language-switch::after,
+.hero-name::after,
+.hero-title::after,
+.hero-line::after {
+
   content: "";
   position: absolute;
   width: 0;
@@ -198,7 +204,11 @@ a.btn::after,
 a.btn:active::after,
 .card:active::after,
 .service-item:active::after,
-.language-switch:active::after {
+.language-switch:active::after,
+.hero-name:active::after,
+.hero-title:active::after,
+.hero-line:active::after {
+
   width: 300px;
   height: 300px;
   opacity: 1;
@@ -253,6 +263,18 @@ a.btn:active::after,
     opacity: 0;
   }
 }
+/* CLICK EFFECT FOR HEADER TEXT */
+.hero-name, .hero-title, .hero-line {
+  cursor: pointer;
+  transition: transform 0.25s ease, text-shadow 0.25s ease;
+}
+
+.hero-name:active,
+.hero-title:active,
+.hero-line:active {
+  transform: scale(0.94);
+  text-shadow: 0 0 18px rgba(255,255,255,0.8);
+}
 
 </style>
 
@@ -268,9 +290,10 @@ a.btn:active::after,
 
 <header>
 <img src="profile.jpg" class="profile">
-<h1>Dr. Mounir</h1>
-<p>DPT Candidate | Physical Therapist</p>
-<p>Dry Needling • Hijama Therapy</p>
+<h1 class="hero-name">Dr. Mounir</h1>
+<p class="hero-title">DPT Candidate | Physical Therapist</p>
+<p class="hero-line">Dry Needling • Hijama Therapy</p>
+
 </header>
 
 <!-- ENGLISH VERSION -->
