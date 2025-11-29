@@ -518,6 +518,23 @@ function closePopup(){
   document.getElementById("popup").style.display = "none";
 }
 </script>
+<script>
+function setLang(lang) {
+
+  const en = document.getElementById("en");
+  const ar = document.getElementById("ar");
+
+  if (!en || !ar) return;
+
+  if (lang === "en") {
+    en.style.display = "block";
+    ar.style.display = "none";
+  } else {
+    en.style.display = "none";
+    ar.style.display = "block";
+  }
+}
+</script>
 
 </body>
 </html>
